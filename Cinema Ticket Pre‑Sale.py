@@ -3,7 +3,7 @@ def get_ticket_request():
     while True:
         try:
             # Ask user for number of tickets
-            tickets = int(input("How many tickets would you like to buy (1–4)? "))
+            tickets = int(input("Hello customers, how many tickets would you like today (1–4)? "))
 
             # Validate that the request is between 1 and 4
             if 1 <= tickets <= 4:
