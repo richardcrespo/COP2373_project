@@ -28,28 +28,28 @@ def process_sale(requested, remaining):
 
 # Main program
 def main():
-    total_tickets = 10          # accumulator for remaining tickets
-    buyer_count = 0             # accumulator for number of buyers
+    available_tickets = 10          # accumulator for remaining tickets
+    total_buyers = 0             # accumulator for number of buyers
 
     print("Welcome to the Cinema Ticket Pre-Sale System!")
 
     # Loop continues until all tickets are sold
-    while total_tickets > 0:
-        print(f"\nTickets remaining: {total_tickets}")
+    while available_tickets > 0:
+        print(f"\nAvailable tickets: {available_tickets}")
 
         # Get the user's ticket request
         request = get_ticket_request()
 
         # Process the sale
-        total_tickets, sold = process_sale(request, total_tickets)
+        available_tickets, sold = process_sale(request, available_tickets)
 
         # Count the buyer only if the sale succeeded
         if sold:
-            buyer_count += 1
+            total_buyers += 1
 
     # After loop ends, all tickets are sold
     print("\nAll tickets have been sold!")
-    print(f"Total number of buyers: {buyer_count}")
+    print(f"Total number of buyers: {total_buyers}")
 
 
 # Run the program
