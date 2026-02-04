@@ -28,7 +28,7 @@ def process_sale(requested, remaining):
 
 # Main program
 def main():
-    total_tickets = 20          # accumulator for remaining tickets
+    total_tickets = 10          # accumulator for remaining tickets
     buyer_count = 0             # accumulator for number of buyers
 
     print("Welcome to the Cinema Ticket Pre-Sale System!")
