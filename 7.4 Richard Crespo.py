@@ -11,22 +11,23 @@ def get_paragraph():
 
 def extract_sentences(paragraph):
     """
-    Extract sentences using the Section 7.4 look-ahead regex pattern.
+    Extract sentences using a look-ahead regex pattern.
+
+    Updated to support sentences that begin with:
+    - A capital letter (A–Z)
+    - A digit (0–9)
 
     Pattern explanation:
-    [A-Z]          → A sentence must begin with a capital letter.
+    [A-Z0-9]       → Sentence must begin with a capital letter OR a number.
     .*?            → Non-greedy match of any characters.
     [.!?]          → Sentence-ending punctuation.
-    (?= [A-Z]|$)   → Look-ahead: punctuation must be followed by a space + capital letter
-                     OR the end of the string. This prevents consuming characters like
-                     abbreviations (U.S.A.) or decimals (65.5).
+    (?= [A-Z0-9]|$)
+                   → Look-ahead: punctuation must be followed by a space + capital
+                     letter/number OR the end of the string.
     """
-    pattern = r'[A-Z].*?[.!?](?= [A-Z]|$)'
+    pattern = r'[A-Z0-9].*?[.!?](?= [A-Z0-9]|$)'
 
-    # DOTALL allows '.' to match newlines
-    # MULTILINE allows look-ahead to match end-of-line as end-of-string
     sentences = re.findall(pattern, paragraph, flags=re.DOTALL | re.MULTILINE)
-
     return sentences
 
 
